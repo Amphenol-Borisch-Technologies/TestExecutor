@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:import namespace="urn:schemas-microsoft-com:asm.v1" />
+	<xs:element name="configuration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="configSections">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="section">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string" use="required" />
+									<xs:attribute name="type" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="appSettings">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element maxOccurs="unbounded" name="add">
+								<xs:complexType>
+									<xs:attribute name="key" type="xs:string" use="required" />
+									<xs:attribute name="value" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TestOperationsSection">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TestOperations">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="TestOperation">
+											<xs:complexType>
+												<xs:attribute name="ID" type="xs:string" use="required" />
+												<xs:attribute name="Revision" type="xs:decimal" use="required" />
+												<xs:attribute name="Description" type="xs:string" use="required" />
+												<xs:attribute name="TestGroupIDs" type="xs:string" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TestGroupsSection">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TestGroups">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="TestGroup">
+											<xs:complexType>
+												<xs:attribute name="ID" type="xs:string" use="required" />
+												<xs:attribute name="Revision" type="xs:decimal" use="required" />
+												<xs:attribute name="Description" type="xs:string" use="required" />
+												<xs:attribute name="TestMeasurementIDs" type="xs:string" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TestMeasurementsSection">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TestMeasurements">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element maxOccurs="unbounded" name="TestMeasurement">
+											<xs:complexType>
+												<xs:attribute name="ID" type="xs:string" use="required" />
+												<xs:attribute name="Revision" type="xs:decimal" use="required" />
+												<xs:attribute name="Description" type="xs:string" use="required" />
+												<xs:attribute name="ClassName" type="xs:string" use="required" />
+												<xs:attribute name="Arguments" type="xs:string" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="runtime">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element xmlns:q1="urn:schemas-microsoft-com:asm.v1" ref="q1:assemblyBinding" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="startup">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="supportedRuntime">
+								<xs:complexType>
+									<xs:attribute name="version" type="xs:string" use="required" />
+									<xs:attribute name="sku" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="system.web">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="membership">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="providers">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="add">
+														<xs:complexType>
+															<xs:attribute name="name" type="xs:string" use="required" />
+															<xs:attribute name="type" type="xs:string" use="required" />
+															<xs:attribute name="serviceUri" type="xs:string" use="required" />
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="defaultProvider" type="xs:string" use="required" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="roleManager">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="providers">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="add">
+														<xs:complexType>
+															<xs:attribute name="name" type="xs:string" use="required" />
+															<xs:attribute name="type" type="xs:string" use="required" />
+															<xs:attribute name="serviceUri" type="xs:string" use="required" />
+															<xs:attribute name="cacheTimeout" type="xs:unsignedInt" use="required" />
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="defaultProvider" type="xs:string" use="required" />
+									<xs:attribute name="enabled" type="xs:boolean" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
