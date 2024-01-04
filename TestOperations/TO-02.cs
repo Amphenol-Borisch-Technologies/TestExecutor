@@ -25,10 +25,10 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Description: "Test Measurement TM0900.",
                 IDPrior: TestExecutive.NONE,
                 IDNext: "TM1000",
-                ClassName: MeasurementProcess.ClassName,
+                ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
-            Debug.Assert(TestExecutor.Only.Initialized());
+            //Debug.Assert(TestExecutor.Only.Initialized());
             //SVI.Set(
             //    P2V5: STATE.ON,
             //    P3V3: STATE.ON,
@@ -47,7 +47,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Description: "Test Measurement TM1000.",
                 IDPrior: "TM0900",
                 IDNext: "TM1100",
-                ClassName: MeasurementTextual.ClassName,
+                ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
             //Debug.Assert(SVI.Are(
@@ -68,7 +68,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Description: "Test Measurement TM1100.",
                 IDPrior: "TM1000",
                 IDNext: "TM1200",
-                ClassName: MeasurementTextual.ClassName,
+                ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
             //Debug.Assert(SVI.Are(
@@ -89,7 +89,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Description: "Test Measurement TM1200.",
                 IDPrior: "TM1100",
                 IDNext: TestExecutive.NONE,
-                ClassName: MeasurementTextual.ClassName,
+                ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
             //Debug.Assert(SVI.Are(

@@ -24,7 +24,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: false,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
-            Debug.Assert(TestExecutor.Only.Initialized());
+            //Debug.Assert(TestExecutor.Only.Initialized());
             //SVI.Set(
             //    P2V5: STATE.ON,
             //    P3V3: STATE.ON,
@@ -33,7 +33,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off);
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return Double.PositiveInfinity.ToString();
         }
 
         internal static String DM02() {
@@ -54,7 +54,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return Double.NegativeInfinity.ToString();
         }
 
         internal static String DM03() {
@@ -67,6 +67,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
+            // NOTE:  CancelNotPassed: true will cause DG-01 TestGroup to cancel.
             //Debug.Assert(SVI.Are(
             //    P2V5: STATE.ON,
             //    P3V3: STATE.ON,
@@ -75,7 +76,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return Double.NaN.ToString();
         }
 
         internal static String DM04() {
@@ -96,7 +97,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return 0.ToString();
         }
         #endregion App.config GroupID "DG-01"
 
@@ -109,6 +110,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 MeasurementIDs: "DM05|DM06|DM07|DM08",
                 Selectable: true,
                 CancelNotPassed: false));
+            // NOTE:  CancelNotPassed: true will cause DG-01 TestGroup to not cancel, unless overridden by a TestMeasurement's CancelNotPassed.
             Debug.Assert(TestExecutor.Only.IsMeasurement(
                 Description: "Debug Measurement DM05.",
                 IDPrior: TestExecutive.NONE,
@@ -116,7 +118,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: false,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
-            Debug.Assert(TestExecutor.Only.Initialized());
+            //Debug.Assert(TestExecutor.Only.Initialized());
             //SVI.Set(
             //    P2V5: STATE.ON,
             //    P3V3: STATE.ON,
@@ -125,7 +127,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off);
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return 0.ToString();
         }
 
         internal static String DM06() {
@@ -146,7 +148,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return Double.PositiveInfinity.ToString();
         }
 
         internal static String DM07() {
@@ -167,7 +169,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return Double.NaN.ToString();
         }
 
         internal static String DM08() {
@@ -188,7 +190,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return Double.NegativeInfinity.ToString();
         }
         #endregion App.config GroupID "DG-01"
     }

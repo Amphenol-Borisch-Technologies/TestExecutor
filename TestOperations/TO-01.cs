@@ -20,14 +20,14 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             Debug.Assert(TestExecutor.Only.IsGroup(
                 GroupID: "TG-01",
                 Description: "Test Group TG-01, Shorts & Power.",
-                MeasurementIDs: "TM0100|TM0200|TM0300",
+                MeasurementIDs: "TM0100|TM0200|TM0300|TM0400",
                 Selectable: false,
                 CancelNotPassed: true));
             Debug.Assert(TestExecutor.Only.IsMeasurement(
                 Description: "Test Measurement TM0100, Shorts.",
                 IDPrior: TestExecutive.NONE,
                 IDNext: "TM0200",
-                ClassName: MeasurementProcess.ClassName,
+                ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=10|SI_Units=ohms|SI_Units_Modifier=NotApplicable"));
             // Debug.Assert(TestExecutor.Only.Initialized());
@@ -42,7 +42,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Description: "Test Measurement TM0200, P2V5 ±5%.",
                 IDPrior: "TM0100",
                 IDNext: "TM0300",
-                ClassName: MeasurementTextual.ClassName,
+                ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=2.625|Low=2.375|SI_Units=volts|SI_Units_Modifier=DC"));
             //Debug.Assert(SVI.Are(
@@ -64,7 +64,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Description: "Test Measurement TM0300, P3V3 ±5%.",
                 IDPrior: "TM0200",
                 IDNext: "TM0400",
-                ClassName: MeasurementTextual.ClassName,
+                ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=3.465|Low=3.135|SI_Units=volts|SI_Units_Modifier=DC"));
             //Debug.Assert(SVI.Are(
@@ -85,8 +85,8 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             Debug.Assert(TestExecutor.Only.IsMeasurement(
                 Description: "Test Measurement TM0400, P5V0 ±5%.",
                 IDPrior: "TM0300",
-                IDNext: TestExecutive.NONE,
-                ClassName: MeasurementTextual.ClassName,
+                IDNext: "TM0500",
+                ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=5.25|Low=4.75|SI_Units=volts|SI_Units_Modifier=DC"));
             //Debug.Assert(SVI.Are(
@@ -112,7 +112,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Selectable: false,
                 CancelNotPassed: true));
             Debug.Assert(TestExecutor.Only.IsMeasurement(
-                Description: "Test Measurement TM0500, U1 Erase",
+                Description: "Test Measurement TM0500, U1 Erase.",
                 IDPrior: "TM0400",
                 IDNext: "TM0600",
                 ClassName: MeasurementProcess.ClassName,
