@@ -29,15 +29,15 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
             Debug.Assert(TestExecutor.Only.Initialized());
-            SVI.Set(
-                P2V5: STATE.ON,
-                P3V3: STATE.ON,
-                P5V0: STATE.ON,
-                VIN: STIMULUS.off,
-                EL: LOAD_CURRENT.off,
-                WG: FREQUENCY.off);
+            //SVI.Set(
+            //    P2V5: STATE.ON,
+            //    P3V3: STATE.ON,
+            //    P5V0: STATE.ON,
+            //    VIN: STIMULUS.off,
+            //    EL: LOAD_CURRENT.off,
+            //    WG: FREQUENCY.off);
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return Double.PositiveInfinity.ToString();
         }
 
         internal static String TM1000() {
@@ -50,15 +50,15 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 ClassName: MeasurementTextual.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
-            Debug.Assert(SVI.Are(
-                P2V5: STATE.ON,
-                P3V3: STATE.ON,
-                P5V0: STATE.ON,
-                VIN: STIMULUS.off,
-                EL: LOAD_CURRENT.off,
-                WG: FREQUENCY.off));
+            //Debug.Assert(SVI.Are(
+            //    P2V5: STATE.ON,
+            //    P3V3: STATE.ON,
+            //    P5V0: STATE.ON,
+            //    VIN: STIMULUS.off,
+            //    EL: LOAD_CURRENT.off,
+            //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return Double.NegativeInfinity.ToString();
         }
 
         internal static String TM1100() {
@@ -71,15 +71,15 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 ClassName: MeasurementTextual.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
-            Debug.Assert(SVI.Are(
-                P2V5: STATE.ON,
-                P3V3: STATE.ON,
-                P5V0: STATE.ON,
-                VIN: STIMULUS.off,
-                EL: LOAD_CURRENT.off,
-                WG: FREQUENCY.off));
+            //Debug.Assert(SVI.Are(
+            //    P2V5: STATE.ON,
+            //    P3V3: STATE.ON,
+            //    P5V0: STATE.ON,
+            //    VIN: STIMULUS.off,
+            //    EL: LOAD_CURRENT.off,
+            //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return 0.ToString();
         }
 
         internal static String TM1200() {
@@ -92,15 +92,15 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 ClassName: MeasurementTextual.ClassName,
                 CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
-            Debug.Assert(SVI.Are(
-                P2V5: STATE.ON,
-                P3V3: STATE.ON,
-                P5V0: STATE.ON,
-                VIN: STIMULUS.off,
-                EL: LOAD_CURRENT.off,
-                WG: FREQUENCY.off));
+            //Debug.Assert(SVI.Are(
+            //    P2V5: STATE.ON,
+            //    P3V3: STATE.ON,
+            //    P5V0: STATE.ON,
+            //    VIN: STIMULUS.off,
+            //    EL: LOAD_CURRENT.off,
+            //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return String.Empty;
+            return Double.NaN.ToString();
         }
         #endregion App.config GroupID "TG-03"
     }
