@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using ABT.TestSpace.TestExec;
 using ABT.TestSpace.TestExec.AppConfig;
 using ABT.TestSpace.TestExec.SCPI_VISA_Instruments;
@@ -21,9 +22,9 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Description: "Debug Measurement DM01.",
                 IDPrior: TestExecutive.NONE,
                 IDNext: "DM02",
-                ClassName: MeasurementNumeric.ClassName,
+                ClassName: MeasurementCustom.ClassName,
                 CancelNotPassed: false,
-                Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
+                Arguments: "NotApplicable"));
             //Debug.Assert(TestExecutor.Only.Initialized());
             //SVI.Set(
             //    P2V5: STATE.ON,
@@ -33,6 +34,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off);
             // TODO:  Add measurement code here, return String result.
+            TestExecutor.Only.MeasurementPresent.Result = EventCodes.PASS;
             return Double.PositiveInfinity.ToString();
         }
 
@@ -76,7 +78,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return Double.NaN.ToString();
+            return 0.ToString();
         }
 
         internal static String DM04() {
@@ -97,7 +99,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return 0.ToString();
+            throw new CancellationException("Cancellation Example.");
         }
         #endregion App.config GroupID "DG-01"
 
@@ -115,9 +117,9 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Description: "Debug Measurement DM05.",
                 IDPrior: TestExecutive.NONE,
                 IDNext: "DM06",
-                ClassName: MeasurementNumeric.ClassName,
+                ClassName: MeasurementCustom.ClassName,
                 CancelNotPassed: false,
-                Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
+                Arguments: "NotApplicable"));
             //Debug.Assert(TestExecutor.Only.Initialized());
             //SVI.Set(
             //    P2V5: STATE.ON,
@@ -127,7 +129,8 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off);
             // TODO:  Add measurement code here, return String result.
-            return 0.ToString();
+            TestExecutor.Only.MeasurementPresent.Result = EventCodes.FAIL;
+            return Double.NaN.ToString();
         }
 
         internal static String DM06() {
@@ -138,8 +141,9 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 IDPrior: "DM05",
                 IDNext: "DM07",
                 ClassName: MeasurementNumeric.ClassName,
-                CancelNotPassed: false,
+                CancelNotPassed: true,
                 Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
+            // NOTE:  CancelNotPassed: true will cause DM06 TestMeasurement if failing.
             //Debug.Assert(SVI.Are(
             //    P2V5: STATE.ON,
             //    P3V3: STATE.ON,
