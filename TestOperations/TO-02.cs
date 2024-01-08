@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using ABT.TestSpace.TestExec;
 using ABT.TestSpace.TestExec.AppConfig;
 using ABT.TestSpace.TestExec.Processes;
@@ -34,6 +35,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             //return PICkit4.Process(PROCESS_METHOD.ExitCode, IC: PICkit4.U1);
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return 0.ToString();
         }
 
@@ -55,6 +61,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             //return PICkit4.Process(PROCESS_METHOD.ExitCode, IC: PICkit4.U1);
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return 0.ToString();
         }
 
@@ -76,6 +87,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             //return PICkit4.Process(PROCESS_METHOD.ExitCode, IC: PICkit4.U1);
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return 0.ToString();
          }
 
@@ -97,6 +113,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             //return PICkit4.Process(PROCESS_METHOD.ExitCode, IC: PICkit4.U1);
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return 0.ToString();
          }
 
@@ -118,6 +139,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             //return PICkit4.Process(PROCESS_METHOD.Redirect, IC: PICkit4.U1);
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return "ABCD";
         }
         #endregion App.config GroupID "TG-02"

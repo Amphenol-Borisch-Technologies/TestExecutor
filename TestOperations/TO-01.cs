@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using ABT.TestSpace.TestExec;
 using ABT.TestSpace.TestExec.AppConfig;
 using ABT.TestSpace.TestExec.Processes;
@@ -32,6 +33,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Arguments: "High=∞|Low=10|SI_Units=ohms|SI_Units_Modifier=NotApplicable"));
             // Debug.Assert(TestExecutor.Only.Initialized());
             // return Switches.Shorts();
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return Double.PositiveInfinity.ToString();
         }
 
@@ -54,6 +60,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    WG: FREQUENCY.off));
             //SVI.PS_Fixed.Set(SVIA.P2V5, STATE.ON);
             //return SVI.PS_Fixed.Get(SVIA.P2V5, PS_DC.Volts).ToString();
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return 2.5.ToString();
         }
 
@@ -76,6 +87,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    WG: FREQUENCY.off));
             //SVI.PS_Fixed.Set(SVIA.P3V3, STATE.ON);
             //return SVI.PS_Fixed.Get(SVIA.P3V3, PS_DC.Volts).ToString();
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return 3.3.ToString();
         }
 
@@ -98,6 +114,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    WG: FREQUENCY.off));
             //SVI.PS_Fixed.Set(SVIA.P5V0, STATE.ON);
             //return SVI.PS_Fixed.Get(SVIA.P5V0, PS_DC.Volts).ToString();
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return 5.ToString();
         }
         #endregion App.config GroupID "TG-01"

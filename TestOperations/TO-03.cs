@@ -4,6 +4,7 @@ using ABT.TestSpace.TestExec.AppConfig;
 using ABT.TestSpace.TestExec.SCPI_VISA_Instruments;
 using ABT.TestSpace.TestExec;
 using ABT.TestSpace.UUT_Number.Instruments;
+using System.Threading;
 
 namespace ABT.TestSpace.UUT_Number.TestOperations {
     internal static partial class TestMeasurements {
@@ -37,6 +38,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off);
             // TODO:  Add measurement code here, return String result.
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return Double.PositiveInfinity.ToString();
         }
 
@@ -58,6 +64,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return Double.NegativeInfinity.ToString();
         }
 
@@ -79,7 +90,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return 0.ToString();
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }            return 0.ToString();
         }
 
         internal static String TM1300() {
@@ -100,6 +115,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
+            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
+                throw new CancellationException("Proactive Cancellation requested.");
+            }
             return Double.NaN.ToString();
         }
         #endregion App.config GroupID "TG-03"
