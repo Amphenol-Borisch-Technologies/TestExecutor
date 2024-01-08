@@ -38,7 +38,6 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request, execution terminated before TestMeasurement completes.");
                 throw new CancellationException("Proactive Cancellation occurring.");
             }
-            TestExecutor.Only.LogMessage(Label: "Note", Message: "Demonstrate a Passing test run.");
             return Double.PositiveInfinity.ToString();
         }
 
@@ -120,6 +119,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request, execution terminated before TestMeasurement completes.");
                 throw new CancellationException("Proactive Cancellation occurring.");
             }
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "Demonstrate a Passing test run.");
             return 5.ToString();
         }
         #endregion App.config GroupID "TG-01"

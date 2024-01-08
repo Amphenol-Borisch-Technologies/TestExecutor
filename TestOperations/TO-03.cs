@@ -43,7 +43,6 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Not honoring Cancellation request, thus simulating a reactive cancellation, execution terminates after TestMeasurement completes.");
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Reactive Cancellation occurring.");
             }
-            TestExecutor.Only.LogMessage(Label: "Note", Message: "Demonstrate a Failing test run.");
             return Double.PositiveInfinity.ToString();
         }
 
@@ -121,6 +120,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Not honoring Cancellation request, thus simulating a reactive cancellation, execution terminates after TestMeasurement completes.");
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Reactive Cancellation occurring.");
             }
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "Demonstrate a Failing test run.");
             return Double.NaN.ToString();
         }
         #endregion App.config GroupID "TG-03"
