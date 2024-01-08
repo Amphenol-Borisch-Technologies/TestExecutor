@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Windows.Forms;
 using ABT.TestSpace.TestExec;
 using ABT.TestSpace.TestExec.AppConfig;
 using ABT.TestSpace.TestExec.SCPI_VISA_Instruments;
@@ -35,7 +36,8 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    WG: FREQUENCY.off);
             // TODO:  Add measurement code here, return String result.
             TestExecutor.Only.MeasurementPresent.Result = EventCodes.PASS;
-            return Double.PositiveInfinity.ToString();
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementCustom requires we explicitly set TestExecutor.Only.MeasurementPresent.Result to resulting EventCode.");
+            return 0.ToString();
         }
 
         internal static String DM02() {
@@ -47,7 +49,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 IDNext: "DM03",
                 ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: false,
-                Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
+                Arguments: "High=0|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
             //Debug.Assert(SVI.Are(
             //    P2V5: STATE.ON,
             //    P3V3: STATE.ON,
@@ -56,6 +58,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementNumeric allows -∞ for a low limit, to disable the low limit.  Handy for Shorts testing.");
             return Double.NegativeInfinity.ToString();
         }
 
@@ -68,7 +71,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 IDNext: "DM04",
                 ClassName: MeasurementNumeric.ClassName,
                 CancelNotPassed: true,
-                Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
+                Arguments: "High=∞|Low=0|SI_Units=volts|SI_Units_Modifier=DC"));
             // NOTE:  CancelNotPassed: true will cause DG-01 TestGroup to cancel.
             //Debug.Assert(SVI.Are(
             //    P2V5: STATE.ON,
@@ -78,7 +81,13 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            return 0.ToString();
+            DialogResult dr = MessageBox.Show("Click Yes to demonstrate Cancellation Exception, No to skip.", "Demonstrate Cancellation Exception?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Deliberately throwing a CancellationException.  Test result will be 'Cancel', and DM04 won't execute.");
+                throw new CancellationException("Cancellation Example.");
+            }
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementNumeric allows ∞ for a high limit, to disable the high limit.  Handy for Opens testing.");
+            return Double.PositiveInfinity.ToString();
         }
 
         internal static String DM04() {
@@ -88,9 +97,9 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 Description: "Debug Measurement DM04.",
                 IDPrior: "DM03",
                 IDNext: TestExecutive.NONE,
-                ClassName: MeasurementNumeric.ClassName,
+                ClassName: MeasurementTextual.ClassName,
                 CancelNotPassed: false,
-                Arguments: "High=∞|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
+                Arguments: "Text=Sample Text String."));
             //Debug.Assert(SVI.Are(
             //    P2V5: STATE.ON,
             //    P3V3: STATE.ON,
@@ -99,7 +108,8 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            throw new CancellationException("Cancellation Example.");
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementTextual useful for checking text strings, which are case sensitive.");
+            return "Sample Text string.";
         }
         #endregion App.config GroupID "DG-01"
 

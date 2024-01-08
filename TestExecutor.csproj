@@ -86,9 +86,10 @@
     <Compile Include="Switching\Routes.cs" />
     <Compile Include="Switching\Shorts.cs" />
     <Compile Include="TestExecutor.cs" />
-    <Compile Include="TestOperations\TO-01.cs" />
     <Compile Include="TestOperations\TO-02.cs" />
-    <Compile Include="TestOperations\TO-Debug.cs" />
+    <Compile Include="TestOperations\TO-01.cs" />
+    <Compile Include="TestOperations\TO-03.cs" />
+    <Compile Include="TestOperations\DG.cs" />
     <Compile Include="Instruments\SVI.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
