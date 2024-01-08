@@ -40,8 +40,8 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             // TODO:  Add measurement code here, return String result.
             Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
-                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
-                throw new CancellationException("Proactive Cancellation requested.");
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Not honoring Cancellation request, thus simulating a reactive cancellation, execution terminates after TestMeasurement completes.");
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Reactive Cancellation occurring.");
             }
             TestExecutor.Only.LogMessage(Label: "Note", Message: "Demonstrate a Failing test run.");
             return Double.PositiveInfinity.ToString();
@@ -67,8 +67,8 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             // TODO:  Add measurement code here, return String result.
             Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
-                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
-                throw new CancellationException("Proactive Cancellation requested.");
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Not honoring Cancellation request, thus simulating a reactive cancellation, execution terminates after TestMeasurement completes.");
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Reactive Cancellation occurring.");
             }
             return Double.NegativeInfinity.ToString();
         }
@@ -93,8 +93,8 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             // TODO:  Add measurement code here, return String result.
             Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
-                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
-                throw new CancellationException("Proactive Cancellation requested.");
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Not honoring Cancellation request, thus simulating a reactive cancellation, execution terminates after TestMeasurement completes.");
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Reactive Cancellation occurring.");
             }            return 0.ToString();
         }
 
@@ -118,8 +118,8 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             // TODO:  Add measurement code here, return String result.
             Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
-                TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
-                throw new CancellationException("Proactive Cancellation requested.");
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Not honoring Cancellation request, thus simulating a reactive cancellation, execution terminates after TestMeasurement completes.");
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Reactive Cancellation occurring.");
             }
             return Double.NaN.ToString();
         }
