@@ -137,9 +137,8 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="TestExecutive, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\TestExecutive\bin\x64\Debug\TestExecutive.dll</HintPath>
+    <Reference Include="TestExecutive">
+      <HintPath>..\..\..\..\..\Program Files\TestExecutive\TestExecutive.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
