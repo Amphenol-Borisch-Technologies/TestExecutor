@@ -25,7 +25,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 IDPrior: TestExecutive.NONE,
                 IDNext: "DM02",
                 ClassName: MeasurementCustom.ClassName,
-                CancelNotPassed: false,
+                CancelNotPassed: true,
                 Arguments: "NotApplicable"));
             //Debug.Assert(TestExecutor.Only.Initialized());
             //SVI.Set(
@@ -36,7 +36,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off);
             // TODO:  Add measurement code here, return String result.
-            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
                 throw new CancellationException("Proactive Cancellation requested.");
@@ -54,7 +54,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 IDPrior: "DM01",
                 IDNext: "DM03",
                 ClassName: MeasurementNumeric.ClassName,
-                CancelNotPassed: false,
+                CancelNotPassed: true,
                 Arguments: "High=0|Low=-∞|SI_Units=volts|SI_Units_Modifier=DC"));
             //Debug.Assert(SVI.Are(
             //    P2V5: STATE.ON,
@@ -64,10 +64,15 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
                 throw new CancellationException("Proactive Cancellation requested.");
+            }
+            DialogResult dr = MessageBox.Show("Click Yes to demonstrate Failing TestMeasurement, No to skip.", "Demonstrate Failing TestMeasurement?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.Yes) {
+                TestExecutor.Only.LogMessage(Label: "Note", Message: "Deliberately failing TestMeasurement.  Test result will be 'Cancel', and DM03 won't execute.");
+            return Double.PositiveInfinity.ToString();
             }
             TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementNumeric allows -∞ for a low limit, to disable the low limit.  Handy for Shorts testing.");
             return Double.NegativeInfinity.ToString();
@@ -92,7 +97,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
                 throw new CancellationException("Proactive Cancellation requested.");
@@ -114,7 +119,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 IDPrior: "DM03",
                 IDNext: TestExecutive.NONE,
                 ClassName: MeasurementTextual.ClassName,
-                CancelNotPassed: false,
+                CancelNotPassed: true,
                 Arguments: "Text=Sample Text String."));
             //Debug.Assert(SVI.Are(
             //    P2V5: STATE.ON,
@@ -124,12 +129,13 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
                 throw new CancellationException("Proactive Cancellation requested.");
             }
             TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementTextual useful for checking text strings, which are case sensitive.");
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "Test result will be 'Fail', because test execution won't cancel midway due to a failing TestMeasurement & the TestGroup/TestMeasurement's CancelNotPassed flags.");
             return "Sample Text string.";
         }
         #endregion App.config GroupID "DG-01"
@@ -160,11 +166,13 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off);
             // TODO:  Add measurement code here, return String result.
-            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
                 throw new CancellationException("Proactive Cancellation requested.");
-            }            TestExecutor.Only.MeasurementPresent.Result = EventCodes.FAIL;
+            }
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "Demonstrating both TestGroup & TestMeasurement's CancelNotPassed set to false, so execution continues after failing.");
+            TestExecutor.Only.MeasurementPresent.Result = EventCodes.FAIL;
             return Double.NaN.ToString();
         }
 
@@ -187,7 +195,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
                 throw new CancellationException("Proactive Cancellation requested.");
@@ -213,11 +221,12 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
                 throw new CancellationException("Proactive Cancellation requested.");
             }
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "Demonstrating both TestGroup & TestMeasurement's CancelNotPassed set to false, so execution continues after failing.");
             return Double.NaN.ToString();
         }
 
@@ -239,7 +248,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             //    EL: LOAD_CURRENT.off,
             //    WG: FREQUENCY.off));
             // TODO:  Add measurement code here, return String result.
-            Thread.Sleep(millisecondsTimeout: 3500); // NOTE:  Simulate test execution delay.
+            Thread.Sleep(millisecondsTimeout: 1500); // NOTE:  Simulate test execution delay.
             if (TestExecutor.Only.CancelTokenSource.IsCancellationRequested) {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request.");
                 throw new CancellationException("Proactive Cancellation requested.");
