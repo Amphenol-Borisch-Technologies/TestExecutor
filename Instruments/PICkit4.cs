@@ -1,5 +1,6 @@
 ﻿using System;
 using ABT.TestSpace.TestExec;
+using ABT.TestSpace.TestExec.AppConfig;
 using ABT.TestSpace.TestExec.Processes;
 using ABT.TestSpace.TestExec.SCPI_VISA_Instruments;
 
@@ -8,21 +9,16 @@ namespace ABT.TestSpace.UUT_Number.Instruments {
         internal static String Process(PROCESS_METHOD process_method, Action IC) {
             IC();
             String process_result;
+            MeasurementProcess mp = (MeasurementProcess)TestExecutor.Only.MeasurementPresent.ClassObject;
             switch (process_method) {
-                case PROCESS_METHOD.ExitCode:  process_result = ProcessExternal.ExitCode(TestExecutor.Only.MeasurementPresent);                 break;
-                case PROCESS_METHOD.Redirect:  process_result = ProcessExternal.Redirect(TestExecutor.Only.MeasurementPresent).StandardOutput;  break;
-                default:                       throw new NotImplementedException(TestExecutive.NotImplementedMessageEnum(typeof(PROCESS_METHOD)));
-            }
-            return process_result;
-        }
-
-        internal static String MPLAB_IPE_Launch(PROCESS_METHOD process_method, Action IC) {
-            IC();
-            String process_result;
-            switch (process_method) {
-                case PROCESS_METHOD.ExitCode:  process_result = ProcessExternal.ExitCode(TestExecutor.Only.MeasurementPresent);                 break;
-                case PROCESS_METHOD.Redirect:  process_result = ProcessExternal.Redirect(TestExecutor.Only.MeasurementPresent).StandardOutput;  break;
-                default:                       throw new NotImplementedException(TestExecutive.NotImplementedMessageEnum(typeof(PROCESS_METHOD)));
+                case PROCESS_METHOD.ExitCode:
+                    process_result = ProcessExternal.ExitCode(mp);
+                    break;
+                case PROCESS_METHOD.Redirect:
+                    process_result = ProcessExternal.Redirect(mp).StandardOutput;
+                    break;
+                default:
+                    throw new NotImplementedException(TestExecutive.NotImplementedMessageEnum(typeof(PROCESS_METHOD)));
             }
             return process_result;
         }

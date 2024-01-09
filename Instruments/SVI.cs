@@ -75,7 +75,23 @@ namespace ABT.TestSpace.UUT_Number.Instruments {
             internal static void Set(Alias alias, STATE state) {
                 if (Is(alias, state)) return; // Don't reapply unnecessarily; might cause transient stimulus during reapplication.
                 if (state == STATE.off) SCPI99.Set(TestExecutor.Only.SVIs[alias], STATE.off);
-                else PS_E3610xB.Set(TestExecutor.Only.SVIs[alias], STATE.ON, VoltsDC: 3.3, AmpsDC: 1.0, SENSE_MODE.EXTernal, DelaySecondsCurrentProtection: 0.5, DelaySecondsSettling: 0.5);
+                else {
+                    Double voltsDC;
+                    switch(alias) {
+                        case Alias a when a == SVIA.P2V5:
+                            voltsDC = 2.5;
+                            break;
+                        case Alias a when a == SVIA.P3V3:
+                            voltsDC = 3.3;
+                            break;
+                        case Alias a when a == SVIA.P5V0:
+                            voltsDC = 5.0;
+                            break;
+                        default:
+                            throw new NotImplementedException($"Unsupported SVIA Alias {alias}.");
+                    }
+                    PS_E3610xB.Set(TestExecutor.Only.SVIs[alias], STATE.ON, VoltsDC: voltsDC, AmpsDC: 1.0, SENSE_MODE.EXTernal, DelaySecondsCurrentProtection: 0.5, DelaySecondsSettling: 0.5);
+                }
             }
         }
 
