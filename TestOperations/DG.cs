@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Reflection.Emit;
 using System.Threading;
 using System.Windows.Forms;
 using ABT.TestSpace.TestExec;
 using ABT.TestSpace.TestExec.AppConfig;
+using ABT.TestSpace.TestExec.Logging;
 using ABT.TestSpace.TestExec.SCPI_VISA_Instruments;
 using ABT.TestSpace.UUT_Number.Instruments;
 
@@ -41,9 +43,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
                 TestExecutor.Only.LogMessage(Label: "Note", Message: "Honoring Cancellation request, execution terminated before TestMeasurement completes.");
                 throw new CancellationException("Proactive Cancellation occurring.");
             }
-            TestExecutor.Only.MeasurementPresent.Result = EventCodes.PASS;
             TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementCustom requires we explicitly set TestExecutor.Only.MeasurementPresent.Result to resulting EventCode.");
-            return 0.ToString();
+            TestExecutor.Only.MeasurementPresent.Result = EventCodes.PASS;
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementCustom requires we return a formatted Value.");
+            TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementCustom permits entirely custom input arguments, but also requires entirely custom Results & return Values.");
+            return Logger.MessageFormat(Label: "Actual", Message: "0");
         }
 
         internal static String DM02() {
@@ -173,7 +177,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             }
             TestExecutor.Only.LogMessage(Label: "Note", Message: "Demonstrating both TestGroup & TestMeasurement's CancelNotPassed set to false, so execution continues after failing.");
             TestExecutor.Only.MeasurementPresent.Result = EventCodes.FAIL;
-            return Double.NaN.ToString();
+            return Logger.MessageFormat(Label: "Actual", Message: Double.NaN.ToString());
         }
 
         internal static String DM06() {
