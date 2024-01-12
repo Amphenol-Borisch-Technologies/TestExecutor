@@ -13,7 +13,11 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
         // NOTE: Invocable test methods in class TestMeasurements, defined as TestMeasurement IDs in App.config, require signatures like "internal static String MethodName()".
         #region App.config GroupID "TG-02"
         internal static String TM0500() {
-            Debug.Assert(TestExecutor.Only.IsOperation("TO-02"));
+            Debug.Assert(TestExecutor.Only.IsOperation(
+                OperationID: "TO-02",
+                Description: "Test Operation TO-02.",
+                Revision: "1.0",
+                GroupsIDs: "TG-02"));
             Debug.Assert(TestExecutor.Only.IsGroup(
                 GroupID: "TG-02",
                 Description: "Test Group TG-02, U1 Erase, Program, Verify & CRC.",

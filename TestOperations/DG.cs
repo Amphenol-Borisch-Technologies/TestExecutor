@@ -47,7 +47,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             TestExecutor.Only.MeasurementPresent.Result = EventCodes.PASS;
             TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementCustom requires we return a formatted Value.");
             TestExecutor.Only.LogMessage(Label: "Note", Message: "MeasurementCustom permits entirely custom input arguments, but also requires entirely custom Results & return Values.");
-            return Logger.MessageFormat(Label: "Actual", Message: "0");
+            return Logger.FormatMessage(Label: "Actual", Message: "0");
         }
 
         internal static String DM02() {
@@ -177,7 +177,7 @@ namespace ABT.TestSpace.UUT_Number.TestOperations {
             }
             TestExecutor.Only.LogMessage(Label: "Note", Message: "Demonstrating both TestGroup & TestMeasurement's CancelNotPassed set to false, so execution continues after failing.");
             TestExecutor.Only.MeasurementPresent.Result = EventCodes.FAIL;
-            return Logger.MessageFormat(Label: "Actual", Message: Double.NaN.ToString());
+            return Logger.FormatMessage(Label: "Actual", Message: Double.NaN.ToString());
         }
 
         internal static String DM06() {
